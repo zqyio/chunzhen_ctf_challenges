@@ -120,7 +120,7 @@ struct stack{
 
 通过查看vmmap，我们发现溢出的部分是TLS部分，而这个程序刚好是个多线程程序，可以想到覆盖pthread结构体实现控制流劫持。
 
-即设置pthread_cancel，然后覆盖cleanup_jmp_buf指针到伪造的buf。
+即设置pthread_cancel，然后覆盖cleanup_jmp_buf指针到伪造的buf。调用cancellation point的函数例如read劫持控制流。
 
 ## exp
 
